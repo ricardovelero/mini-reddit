@@ -4,7 +4,7 @@ import { Select } from "../../components/select/Select";
 
 export const Header = () => {
     return (
-        <div className="flex items-center justify-betweens">
+        <div className="flex items-center justify-between">
             <Title />
             <Select />
         </div>
