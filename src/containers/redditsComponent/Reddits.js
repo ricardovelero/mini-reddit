@@ -19,38 +19,35 @@ export const Reddits = ({ subreddit }) => {
     }, [subreddit]);
 
     return (
-        <ul className="divide-y divide-gray-100">
-            {posts.map((post) => (
-                <li
-                    key={post.data.id}
-                    className="relative flex justify-between py-5">
-                    <div className="flex gap-x-4 pr-6 sm:w-1/2 sm:flex-none">
-                        {/* <img
+        <div className="bg-white px-4 py-12 sm:px-6 lg:px-8 rounded-lg ring-1 ring-slate-900/10">
+            <h2>Here are your selected subreddits:</h2>
+            <ul className="divide-y divide-gray-100">
+                {posts.map((post) => (
+                    <li
+                        key={post.data.id}
+                        className="relative flex justify-between py-5">
+                        <div className="flex gap-x-4 pr-6 sm:w-1/2 sm:flex-none">
+                            {/* <img
                             className="h-12 w-12 flex-none rounded-full bg-gray-50"
                             src={post.data.thumbnail}
                             alt="Subreddit thumbnail"
                         /> */}
-                        <div className="min-w-0 flex-auto">
-                            <p className="text-sm font-semibold leading-6 text-gray-900">
-                                <a
-                                    href={`https://www.reddit.com${post.data.permalink}`}>
-                                    <span className="absolute inset-x-0 -top-px bottom-0" />
-                                    {post.data.title}
-                                </a>
-                            </p>
-                            <p className="mt-1 flex text-xs leading-5 text-gray-500">
-                                {post.data.author}
-                            </p>
+                            <div className="min-w-0 flex-auto">
+                                <p className="text-sm font-semibold leading-6 text-gray-900">
+                                    <a
+                                        href={`https://www.reddit.com${post.data.permalink}`}>
+                                        <span className="absolute inset-x-0 -top-px bottom-0" />
+                                        {post.data.title}
+                                    </a>
+                                </p>
+                                <p className="mt-1 flex text-xs leading-5 text-gray-500">
+                                    {post.data.author}
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="flex items-center justify-between gap-x-4 sm:w-1/2 sm:flex-none">
-                        <ChevronRightIcon
-                            className="h-5 w-5 flex-none text-gray-400"
-                            aria-hidden="true"
-                        />
-                    </div>
-                </li>
-            ))}
-        </ul>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 };
