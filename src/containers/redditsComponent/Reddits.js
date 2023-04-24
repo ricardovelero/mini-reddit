@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ChevronRightIcon } from "@heroicons/react/20/solid";
 
 export const Reddits = ({ subreddit }) => {
     const [posts, setPosts] = useState([]);
@@ -19,8 +18,11 @@ export const Reddits = ({ subreddit }) => {
     }, [subreddit]);
 
     return (
-        <div className="bg-white px-4 py-12 sm:px-6 lg:px-8 rounded-lg ring-1 ring-slate-900/10">
-            <h2>Here are your selected subreddits:</h2>
+        <div className="bg-white px-4 pt-2 pb-12 sm:px-6 lg:px-8 rounded-lg ring-1 ring-slate-900/10">
+            <h2 className="mt-6 text-xl leading-8 text-gray-700">
+                List for <span className="text-yellow-500">{subreddit}</span>{" "}
+                subreddits:
+            </h2>
             <ul className="divide-y divide-gray-100">
                 {posts.map((post) => (
                     <li
