@@ -4,14 +4,16 @@ import { Header } from "./containers/headerComponent/Header";
 import { Reddits } from "./containers/redditsComponent/Reddits";
 
 function App() {
-    const [subreddit, setSubreddit] = useState("");
+    const [subreddit, setSubreddit] = useState("popular");
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <Header />
-            </header>
-            <Reddits />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-3xl">
+                <header className="App-header">
+                    <Header />
+                </header>
+                <Reddits subreddit={subreddit} />
+            </div>
         </div>
     );
 }
