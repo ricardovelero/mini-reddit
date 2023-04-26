@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export const Reddits = ({ subreddit }) => {
     const [posts, setPosts] = useState([]);
 
-    async function getRedditData(subreddit) {
+    async function getSubredditPosts(subreddit) {
         const response = await fetch(
             `https://www.reddit.com/r/${subreddit}.json`
         );
@@ -12,7 +12,7 @@ export const Reddits = ({ subreddit }) => {
     }
 
     useEffect(() => {
-        getRedditData("javascript").then((data) =>
+        getSubredditPosts("javascript").then((data) =>
             setPosts(data.data.children)
         );
     }, [subreddit]);
@@ -20,8 +20,8 @@ export const Reddits = ({ subreddit }) => {
     return (
         <div className="bg-white px-4 pt-2 pb-12 sm:px-6 lg:px-8 rounded-lg ring-1 ring-slate-900/10">
             <h2 className="mt-6 text-xl leading-8 text-gray-700">
-                List for <span className="text-yellow-500">{subreddit}</span>{" "}
-                subreddits:
+                Latest Posts for{" "}
+                <span className="text-yellow-500">{subreddit}</span> subreddit:
             </h2>
             <ul className="divide-y divide-gray-100">
                 {posts.map((post) => (
