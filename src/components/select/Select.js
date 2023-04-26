@@ -14,7 +14,7 @@ export const Select = () => {
     async function getSubreddits() {
         const response = await fetch("https://www.reddit.com/subreddits.json");
         const json = await response.json();
-        console.log(json);
+        // console.log(json.data.children.map((subreddit) => subreddit.data));
         return json.data.children.map((subreddit) => subreddit.data);
     }
 
@@ -33,7 +33,7 @@ export const Select = () => {
               );
 
     return (
-        <div className="ml-7 mb-7 z-10">
+        <div className="ml-7 mb-7">
             <Combobox value={selected} onChange={setSelected}>
                 <Combobox.Label className="block text-sm font-medium leading-6 text-gray-900">
                     Select Subreddit:
@@ -57,7 +57,7 @@ export const Select = () => {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                         afterLeave={() => setQuery("")}>
-                        <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                        <Combobox.Options className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                             {filteredSubreddits.length === 0 && query !== "" ? (
                                 <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
                                     Nothing found.
@@ -67,11 +67,12 @@ export const Select = () => {
                                     <Combobox.Option
                                         key={subreddit.id}
                                         className={({ active }) =>
-                                            `relative cursor-default select-none py-2 pl-10 pr-4 ${
+                                            classNames(
+                                                "relative cursor-default select-none py-2 pl-3 pr-9",
                                                 active
                                                     ? "bg-indigo-600 text-white"
                                                     : "text-gray-900"
-                                            }`
+                                            )
                                         }
                                         value={subreddit}>
                                         {({ selected, active }) => (
