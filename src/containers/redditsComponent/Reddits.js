@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Search from "../../components/search/Search";
 
 export const Reddits = ({ subreddit }) => {
     const [posts, setPosts] = useState([]);
@@ -15,14 +16,18 @@ export const Reddits = ({ subreddit }) => {
         getSubredditPosts(subreddit).then((data) =>
             setPosts(data.data.children)
         );
-    }, [subreddit]);
+    }, [subreddit, posts]);
 
     return (
         <div className="bg-white px-4 pt-2 pb-12 sm:px-6 lg:px-8 rounded-lg ring-1 ring-slate-900/10">
-            <h2 className="mt-6 text-xl leading-8 text-gray-700">
-                Latest Posts for{" "}
-                <span className="text-yellow-500">{subreddit}</span> subreddit:
-            </h2>
+            <div className="flex justify-between">
+                <h2 className="mt-6 text-xl leading-8 text-gray-700">
+                    Latest Posts for{" "}
+                    <span className="text-yellow-500">{subreddit}</span>{" "}
+                    subreddit:
+                </h2>
+                <Search posts={posts} setPosts={setPosts} />
+            </div>
             <ul className="divide-y divide-gray-100">
                 {posts.map((post) => (
                     <li
