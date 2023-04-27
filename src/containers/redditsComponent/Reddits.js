@@ -12,7 +12,7 @@ export const Reddits = ({ subreddit }) => {
     }
 
     useEffect(() => {
-        getSubredditPosts("javascript").then((data) =>
+        getSubredditPosts(subreddit).then((data) =>
             setPosts(data.data.children)
         );
     }, [subreddit]);
