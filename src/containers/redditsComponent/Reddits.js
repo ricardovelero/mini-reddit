@@ -16,7 +16,7 @@ export const Reddits = ({ subreddit }) => {
         getSubredditPosts(subreddit).then((data) =>
             setPosts(data.data.children)
         );
-    }, [subreddit, posts]);
+    }, [subreddit]);
 
     return (
         <div className="bg-white px-4 pt-2 pb-12 sm:px-6 lg:px-8 rounded-lg ring-1 ring-slate-900/10">

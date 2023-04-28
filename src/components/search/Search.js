@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function Search({ posts, setPosts }) {
     const [searchTerm, setSearchTerm] = useState("");
@@ -6,14 +6,18 @@ export default function Search({ posts, setPosts }) {
     function handleOnChange(e) {
         setSearchTerm(e.target.value);
         if (e.target.value !== "") {
-            var results = posts.filter((post) =>
+            let results = posts.filter((post) =>
                 post.data.title
                     .toLowerCase()
                     .includes(e.target.value.toLowerCase())
             );
+            setPosts(results);
         }
-        setPosts(results);
     }
+    useEffect(() => {
+        setSearchTerm(searchTerm);
+    }, [searchTerm]);
+
     return (
         <div>
             <label
